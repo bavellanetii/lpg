@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\bavel\\angularzerotohero\\lpg\\api\\api.csproj": {}
+    "C:\\Users\\bavel\\angularzerotohero\\lpg\\api\\api.csproj": {}
   },
   "projects": {
-    "c:\\Users\\bavel\\angularzerotohero\\lpg\\api\\api.csproj": {
+    "C:\\Users\\bavel\\angularzerotohero\\lpg\\api\\api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\bavel\\angularzerotohero\\lpg\\api\\api.csproj",
+        "projectUniqueName": "C:\\Users\\bavel\\angularzerotohero\\lpg\\api\\api.csproj",
         "projectName": "api",
-        "projectPath": "c:\\Users\\bavel\\angularzerotohero\\lpg\\api\\api.csproj",
+        "projectPath": "C:\\Users\\bavel\\angularzerotohero\\lpg\\api\\api.csproj",
         "packagesPath": "C:\\Users\\bavel\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\bavel\\angularzerotohero\\lpg\\api\\obj\\",
+        "outputPath": "C:\\Users\\bavel\\angularzerotohero\\lpg\\api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\bavel\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -42,11 +42,23 @@
               "target": "Package",
               "version": "[7.0.10, )"
             },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.11, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.11, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.11, )"
             },
