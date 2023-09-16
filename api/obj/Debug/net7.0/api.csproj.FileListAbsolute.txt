@@ -74,3 +74,5 @@ C:\Users\bavel\angularzerotohero\lpg\api\obj\Debug\net7.0\refint\api.dll
 C:\Users\bavel\angularzerotohero\lpg\api\obj\Debug\net7.0\api.pdb
 C:\Users\bavel\angularzerotohero\lpg\api\obj\Debug\net7.0\api.genruntimeconfig.cache
 C:\Users\bavel\angularzerotohero\lpg\api\obj\Debug\net7.0\ref\api.dll
+C:\Users\bavel\angularzerotohero\lpg\api\bin\Debug\net7.0\AutoMapper.dll
+C:\Users\bavel\angularzerotohero\lpg\api\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

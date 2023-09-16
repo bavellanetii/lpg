@@ -8,6 +8,9 @@ namespace api.Interfaces
 {
     public interface IUserRepository
     {
-        ICollection<User> GetUsers(); 
+        ICollection<User> GetUsers();
+        User GetUser(int id);
+        User GetUser(string name);
+        bool UserExists(int id);
     }
 }
