@@ -6,16 +6,16 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers
 {
-  [Route("api/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
-  public class UserController : Controller
+    public class UserController : Controller
     {
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
         public UserController(IUserRepository userRepository, IMapper mapper)
         {
             _mapper = mapper;
-            _userRepository = userRepository;           
+            _userRepository = userRepository;
         }
 
         [HttpGet]
@@ -24,10 +24,10 @@ namespace api.Controllers
         {
             var users = _mapper.Map<List<UserDto>>(_userRepository.GetUsers());
 
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            return Ok(users);    
+            return Ok(users);
         }
 
         [HttpGet("{id}")]
@@ -35,14 +35,26 @@ namespace api.Controllers
         [ProducesResponseType(400)]
         public IActionResult GetUser(int id)
         {
-            if(!_userRepository.UserExists(id))
+            if (!_userRepository.UserExists(id))
                 return NotFound();
 
             var user = _mapper.Map<UserDto>(_userRepository.GetUser(id));
 
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
+            return Ok(user);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult IncrementProgrammingXP(int id)
+        {
+             if (!_userRepository.UserExists(id))
+                return NotFound();
+            
+            var user = _mapper.Map<UserDto>(_userRepository.GetUser(id));
+
+            user.ProgrammingXP = (user.ProgrammingXP + 2);
             return Ok(user);
         }
     }
