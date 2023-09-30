@@ -80,12 +80,25 @@ namespace api.Repositories
 
         public User IncrementHouseworkXP(int id)
         {
-            throw new NotImplementedException();
+            var user = _context.Users.Where(p => p.Id == id).FirstOrDefault();
+
+            user.HouseworkXP = (user.HouseworkXP + 2);
+
+            _context.SaveChanges();
+
+            return user; 
         }
 
         public User DecrementHouseworkXP(int id)
         {
-            throw new NotImplementedException();
+            var user = _context.Users.Where(p => p.Id == id).FirstOrDefault();
+
+            if(user.HouseworkXP > 0)
+                user.HouseworkXP = (user.HouseworkXP -2);
+
+            _context.SaveChanges();
+
+            return user;
         }
 
         public User IncrementReadingXP(int id)
