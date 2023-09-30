@@ -71,6 +71,28 @@ namespace api.Controllers
 
             return Ok(user);
         }
+
+        [HttpPut("/api/incrementfitnessxp/{id}")]
+        public IActionResult IncrementFitnessXP(int id)
+        {
+            if(!_userRepository.UserExists(id))
+                return NotFound();
+
+            var user = _mapper.Map<UserDto>(_userRepository.IncrementFitnessXP(id));
+
+            return Ok(user);
+        }
+
+        [HttpPut("/api/decrementfitnessxp/{id}")]
+        public IActionResult DecrementFitnessXP(int id)
+        {
+            if(!_userRepository.UserExists(id))
+                return NotFound();
+
+            var user = _mapper.Map<UserDto>(_userRepository.DecrementFitnessXP(id));
+
+            return Ok(user);
+        }
         
     }
 }
