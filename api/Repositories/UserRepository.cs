@@ -16,7 +16,7 @@ namespace api.Repositories
         {
             return _context.Users.OrderBy(p => p.Id).ToList();
         }
-        
+
         public User GetUser(int id)
         {
             return _context.Users.Where(p => p.Id == id).FirstOrDefault();
@@ -35,23 +35,30 @@ namespace api.Repositories
         public User IncrementProgrammingXP(int id)
         {
             var user = _context.Users.Where(p => p.Id == id).FirstOrDefault();
-            
+
             user.ProgrammingXP = (user.ProgrammingXP + 2);
-            
+
+            if (user.ProgrammingXP == user.ProgrammingLevelXP)
+            {
+                user.ProgrammingLevel++;
+                user.ProgrammingLevelXP = (user.ProgrammingLevelXP + 2);
+                user.ProgrammingXP = 0;
+            }
+
             _context.SaveChanges();
-            
+
             return user;
         }
 
         public User DecrementProgrammingXP(int id)
         {
             var user = _context.Users.Where(p => p.Id == id).FirstOrDefault();
-            
-            if(user.ProgrammingXP > 0)
+
+            if (user.ProgrammingXP > 0)
                 user.ProgrammingXP = (user.ProgrammingXP - 2);
-            
+
             _context.SaveChanges();
-            
+
             return user;
         }
 
@@ -60,6 +67,13 @@ namespace api.Repositories
             var user = _context.Users.Where(p => p.Id == id).FirstOrDefault();
 
             user.FitnessXP = (user.FitnessXP + 2);
+
+            if (user.FitnessXP == user.FitnessLevelXP)
+            {
+                user.FitnessLevel++;
+                user.FitnessLevelXP = (user.FitnessLevelXP + 2);
+                user.FitnessXP = 0;
+            }
 
             _context.SaveChanges();
 
@@ -70,12 +84,12 @@ namespace api.Repositories
         {
             var user = _context.Users.Where(p => p.Id == id).FirstOrDefault();
 
-            if(user.FitnessXP > 0)
+            if (user.FitnessXP > 0)
                 user.FitnessXP = (user.FitnessXP - 2);
-            
+
             _context.SaveChanges();
 
-            return user; 
+            return user;
         }
 
         public User IncrementHouseworkXP(int id)
@@ -84,17 +98,24 @@ namespace api.Repositories
 
             user.HouseworkXP = (user.HouseworkXP + 2);
 
+            if (user.HouseworkXP == user.HouseworkLevelXP)
+            {
+                user.HouseworkLevel++;
+                user.HouseworkLevelXP = (user.HouseworkLevelXP + 2);
+                user.HouseworkXP = 0;
+            }
+
             _context.SaveChanges();
 
-            return user; 
+            return user;
         }
 
         public User DecrementHouseworkXP(int id)
         {
             var user = _context.Users.Where(p => p.Id == id).FirstOrDefault();
 
-            if(user.HouseworkXP > 0)
-                user.HouseworkXP = (user.HouseworkXP -2);
+            if (user.HouseworkXP > 0)
+                user.HouseworkXP = (user.HouseworkXP - 2);
 
             _context.SaveChanges();
 
@@ -107,6 +128,13 @@ namespace api.Repositories
 
             user.ReadingXP = (user.ReadingXP + 2);
 
+            if (user.ReadingXP == user.ReadingLevelXP)
+            {
+                user.ReadingLevel++;
+                user.ReadingLevelXP = (user.ReadingLevelXP + 2);
+                user.ReadingXP = 0;
+            }
+
             _context.SaveChanges();
 
             return user;
@@ -116,7 +144,7 @@ namespace api.Repositories
         {
             var user = _context.Users.Where(p => p.Id == id).FirstOrDefault();
 
-            if(user.ReadingXP > 0)
+            if (user.ReadingXP > 0)
                 user.ReadingXP = (user.ReadingXP - 2);
 
             _context.SaveChanges();
