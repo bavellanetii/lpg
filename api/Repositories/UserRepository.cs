@@ -16,7 +16,7 @@ namespace api.Repositories
         {
             return _context.Users.OrderBy(p => p.Id).ToList();
         }
-
+        
         public User GetUser(int id)
         {
             return _context.Users.Where(p => p.Id == id).FirstOrDefault();
@@ -30,6 +30,59 @@ namespace api.Repositories
         public bool UserExists(int id)
         {
             return _context.Users.Any(p => p.Id == id);
+        }
+
+        public User IncrementProgrammingXP(int id)
+        {
+            var user = _context.Users.Where(p => p.Id == id).FirstOrDefault();
+            
+            user.ProgrammingXP = (user.ProgrammingXP + 2);
+            
+            _context.SaveChanges();
+            
+            return user;
+        }
+
+        public User DecrementProgrammingXP(int id)
+        {
+            var user = _context.Users.Where(p => p.Id == id).FirstOrDefault();
+            
+            if(user.ProgrammingXP > 0)
+                user.ProgrammingXP = (user.ProgrammingXP - 2);
+            
+            _context.SaveChanges();
+            
+            return user;
+        }
+
+        public User IncrementFitnessXP(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public User DecrementFitnessXP(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public User IncrementHouseworkXP(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public User DecrementHouseworkXP(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public User IncrementReadingXP(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public User DecrementReadingXP(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

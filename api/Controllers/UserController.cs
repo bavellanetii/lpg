@@ -1,8 +1,10 @@
+using api.Data;
 using api.Dto;
 using api.Interfaces;
 using api.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace api.Controllers
 {
@@ -12,8 +14,10 @@ namespace api.Controllers
     {
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
-        public UserController(IUserRepository userRepository, IMapper mapper)
+        private readonly DataContext _context;
+        public UserController(IUserRepository userRepository, IMapper mapper, DataContext context)
         {
+            _context = context;
             _mapper = mapper;
             _userRepository = userRepository;
         }
@@ -46,16 +50,16 @@ namespace api.Controllers
             return Ok(user);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("/api/incrementprogrammingxp/{id}")]
         public IActionResult IncrementProgrammingXP(int id)
         {
              if (!_userRepository.UserExists(id))
                 return NotFound();
             
-            var user = _mapper.Map<UserDto>(_userRepository.GetUser(id));
-
-            user.ProgrammingXP = (user.ProgrammingXP + 2);
+            var user = _mapper.Map<UserDto>(_userRepository.IncrementProgrammingXP(id));
+            
             return Ok(user);
         }
+        
     }
 }
