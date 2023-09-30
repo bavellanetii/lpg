@@ -57,12 +57,25 @@ namespace api.Repositories
 
         public User IncrementFitnessXP(int id)
         {
-            throw new NotImplementedException();
+            var user = _context.Users.Where(p => p.Id == id).FirstOrDefault();
+
+            user.FitnessXP = (user.FitnessXP + 2);
+
+            _context.SaveChanges();
+
+            return user;
         }
 
         public User DecrementFitnessXP(int id)
         {
-            throw new NotImplementedException();
+            var user = _context.Users.Where(p => p.Id == id).FirstOrDefault();
+
+            if(user.FitnessXP > 0)
+                user.FitnessXP = (user.FitnessXP - 2);
+            
+            _context.SaveChanges();
+
+            return user; 
         }
 
         public User IncrementHouseworkXP(int id)

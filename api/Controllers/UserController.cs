@@ -60,6 +60,17 @@ namespace api.Controllers
             
             return Ok(user);
         }
+
+        [HttpPut("/api/decrementprogrammingxp/{id}")]
+        public IActionResult DecrementProgrammingXP(int id)
+        {
+            if(!_userRepository.UserExists(id))
+                return NotFound();
+
+            var user = _mapper.Map<UserDto>(_userRepository.DecrementProgrammingXP(id));
+
+            return Ok(user);
+        }
         
     }
 }
