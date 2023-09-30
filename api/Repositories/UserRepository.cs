@@ -103,12 +103,25 @@ namespace api.Repositories
 
         public User IncrementReadingXP(int id)
         {
-            throw new NotImplementedException();
+            var user = _context.Users.Where(p => p.Id == id).FirstOrDefault();
+
+            user.ReadingXP = (user.ReadingXP + 2);
+
+            _context.SaveChanges();
+
+            return user;
         }
 
         public User DecrementReadingXP(int id)
         {
-            throw new NotImplementedException();
+            var user = _context.Users.Where(p => p.Id == id).FirstOrDefault();
+
+            if(user.ReadingXP > 0)
+                user.ReadingXP = (user.ReadingXP - 2);
+
+            _context.SaveChanges();
+
+            return user;
         }
     }
 }
