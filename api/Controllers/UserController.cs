@@ -94,5 +94,26 @@ namespace api.Controllers
             return Ok(user);
         }
         
+        [HttpPut("/api/incrementhouseworkxp/{id}")]
+        public IActionResult IncrementHouseworkXP(int id)
+        {
+            if(!_userRepository.UserExists(id))
+                return NotFound();
+
+            var user = _mapper.Map<UserDto>(_userRepository.IncrementHouseworkXP(id));
+
+            return Ok(user);
+        }
+
+        [HttpPut("/api/decrementhouseworkxp/{id}")]
+        public IActionResult DecrementHouseworkXP(int id)
+        {
+            if(!_userRepository.UserExists(id))
+                return NotFound();
+
+            var user = _mapper.Map<UserDto>(_userRepository.DecrementHouseworkXP(id));
+
+            return Ok(user);
+        }
     }
 }
