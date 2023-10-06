@@ -22,7 +22,7 @@ namespace api.Controllers
             _userRepository = userRepository;
         }
 
-        [HttpGet]
+        [HttpGet("/api/users")]
         [ProducesResponseType(200, Type = typeof(IEnumerable<User>))]
         public IActionResult GetUsers()
         {

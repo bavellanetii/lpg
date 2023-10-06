@@ -1,45 +1,45 @@
-<div class="container" >
+<div class="container">
     <div class="row">
-      <div class="col-4">
-        <button type="button" class="btn btn-danger">+</button> Programming Level 1:
+      <div class="col-4" *ngFor="let user of users">
+        <button type="button" class="btn btn-danger" >+</button> Programming Level {{user.programmingLevel}}:
       </div>
 
 
-      <div class="col-8">
-        <ngb-progressbar type="success" [value]="25" [striped]="true" ></ngb-progressbar>
+      <div class="col-8" >
+        <ngb-progressbar *ngFor="let user of users" type="success" [value]="user.programmingXP" [striped]="true" [max]="user.programmingLevelXP"></ngb-progressbar>
       </div>
     </div>
 </div>  
 
 <div class="container">
     <div class="row">
-      <div class="col-4">
-        <button type="button" class="btn btn-danger">+</button> Fitness Level 1:
+      <div class="col-4" *ngFor="let user of users">
+        <button type="button" class="btn btn-danger">+</button> Fitness Level {{user.fitnessLevel}}:
       </div>
       <div class="col-8">
-        <ngb-progressbar type="info" [value]="25" [striped]="true" ></ngb-progressbar>
+        <ngb-progressbar *ngFor="let user of users" type="info" [value]="user.fitnessLevel" [striped]="true" [max]="user.fitnessLevelXP"></ngb-progressbar>
       </div>
     </div>
 </div>  
 
 <div class="container">
     <div class="row">
-      <div class="col-4">
-        <button type="button" class="btn btn-danger">+</button> Housework Level 1:
+      <div class="col-4" *ngFor="let user of users">
+        <button type="button" class="btn btn-danger">+</button> Housework Level {{user.houseworkLevel}}:
       </div>
-      <div class="col-8">
-        <ngb-progressbar type="warning" [value]="25" [striped]="true" ></ngb-progressbar>
+      <div class="col-8"*ngFor="let user of users">
+        <ngb-progressbar type="warning" [value]="user.houseworkXP" [striped]="true" [max]="user.houseworkLevelXP"></ngb-progressbar>
       </div>
     </div>
 </div>  
 
 <div class="container">
     <div class="row">
-      <div class="col-4">
-        <button type="button" class="btn btn-danger">+</button> Reading Level 1:
+      <div class="col-4" *ngFor="let user of users">
+        <button type="button" class="btn btn-danger">+</button> Reading Level {{user.readingLevel}}:
       </div>
-      <div class="col-8">
-        <ngb-progressbar type="danger" [value]="25" [striped]="true" ></ngb-progressbar>
+      <div class="col-8" *ngFor="let user of users">
+        <ngb-progressbar type="danger" [value]="user.readingXP" [striped]="true" [max]="user.readingLevelXP"></ngb-progressbar>
       </div>
     </div>
 </div>  
